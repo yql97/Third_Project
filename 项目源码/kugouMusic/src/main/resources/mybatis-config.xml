@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 读取jbdc.proerties配置文件 -->
+	<properties resource="jdbc.properties">
+	</properties>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		 <mapper resource="kugouMusic/dao/AdminMapper.xml"/> 
+		 <mapper resource="kugouMusic/dao/CooperateMapper.xml"/>
+		 <mapper resource="kugouMusic/dao/ImgMapper.xml"/>
+		 <mapper resource="kugouMusic/dao/RecordMapper.xml"/>
+		 <mapper resource="kugouMusic/dao/SongMapper.xml"/>
+		 <mapper resource="kugouMusic/dao/UserMapper.xml"/>
+	</mappers>
+</configuration>
