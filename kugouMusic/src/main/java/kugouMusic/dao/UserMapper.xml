@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kugouMusic.dao.UserDao">
+	<select id="getAllUserInfo" resultType="kugouMusic.entity.Users">
+		select * from users
+	</select>
+	<select id="getAllUserInfoById" resultType="kugouMusic.entity.Users">
+		select * from users where UserName= #{userName}
+	</select>
+	<select id="getAllUserInfoByName" resultType="kugouMusic.entity.Users">
+		select * from users where UserName = #{userName} and UserPwd= #{userPwd}
+	</select>
+     <insert id="insertUserInfo" useGeneratedKeys="true">
+	    insert into users values (null,#{userName},#{userEmail},#{userPwd},0,1)
+	</insert>
+	<update id="updateUserInfo">
+	</update>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kugouMusic.dao.SongDao">
+	<select id="getAllSongInfo" resultType="kugouMusic.entity.Song">
+		select * from song where SongName like '%'+#{1}+'%' 
+	</select>
+	<select id="getAllSong" resultType="kugouMusic.entity.Song">
+	   select * from song where AreaID = 19 
+	</select>
+	<select id="getAllSongHeat" resultType="kugouMusic.entity.Song">
+	select * from song where AreaID = 17 
+	</select>
+	<select id="getAllSongRadio" resultType="kugouMusic.entity.Song">
+	select * from song where AreaID = 21  <!-- 有图 -->
+	</select>
+	<select id="getAllSongOriginal" resultType="kugouMusic.entity.Song">
+		select * from song where AreaID = 23 
+	</select>
+	<select id="getAllSongMV" resultType="kugouMusic.entity.Song">
+		select * from song where AreaID = 27 
+	</select>
+</mapper>

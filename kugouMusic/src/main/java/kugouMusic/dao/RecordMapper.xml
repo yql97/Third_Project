@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kugouMusic.dao.RecordDao">
+	<select id="getAllRecordInfo" resultType="kugouMusic.entity.Record">
+		select * from record order by RecordDate desc 
+	</select>
+	<select id="getAllRecordcount" resultType="int">
+		select count(*) from record where RecordName = #{recordName}
+	</select>
+    <insert id="recordInfo" useGeneratedKeys="false">
+		insert into record 
+		values(null,#{recordIP},#{recordName},now())
+	</insert>
+</mapper>
