@@ -18,9 +18,44 @@
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
 		<link rel="Shortcut Icon" href="images/favicon.ico">
-		<link rel='stylesheet' type='text/css' href='css/GGstyles.css'>
 </head>
 <body>
+        <script type="text/javascript">
+				function getOs() 
+				{ 
+				    var OsObject = ""; 
+				   if(navigator.userAgent.indexOf("MSIE")>0) { 
+				        return "MSIE";
+				   } 
+				   if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){ 
+				        return "Firefox"; 
+				   } 
+				   if(isSafari=navigator.userAgent.indexOf("Safari")>0) { 
+				        return "Safari"; 
+				   }  
+				   if(isCamino=navigator.userAgent.indexOf("Camino")>0){ 
+				        return "Camino"; 
+				   } 
+				   if(isMozilla=navigator.userAgent.indexOf("Gecko")>0){ 
+				        return "Gecko"; 
+				   } 
+				} 
+				if(getOs() == "MSIE"){
+					document.write("<link rel='stylesheet' type='text/css' href='css/IEstyles.css'>");
+				}
+				if(getOs() == "Firefox"){
+					document.write("<link rel='stylesheet' type='text/css' href='css/FFstyles.css'>");
+				}
+				if(getOs() == "Safari"){
+					document.write("<link rel='stylesheet' type='text/css' href='css/GGstyles.css'>");
+				}
+				if(getOs() == "Camino"){
+					alert("Camino");
+				}
+				if(getOs() == "Gecko"){
+					alert("Gecko");
+				}
+			</script>
 		<div>
 			<script type="text/javascript" src="js/jquery-1.9.js"></script>
 			<script type="text/javascript" src="js/Abandon.js"></script>

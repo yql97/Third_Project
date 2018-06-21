@@ -11,7 +11,8 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
-		<c:url value="/showMessage.html" var="messageUrl" />
-		<a href="${messageUrl}">Click to enter</a>
+	<jsp:forward page="WinLoad"></jsp:forward>
+		<!--<c:url value="/showMessage.html" var="messageUrl" />
+		<a href="${messageUrl}">Click to enter</a>-->
 	</body>
 </html>
