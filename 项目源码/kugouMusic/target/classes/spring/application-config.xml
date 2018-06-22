@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- Uncomment and add your base-package here:
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
-
+      <!-- 自动扫描 -->
+        <context:component-scan base-package="kugouMusic">
+            <!-- 扫描时跳过 @Controller 注解的JAVA类（控制器） -->
+            <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        </context:component-scan>
+     <!--扫描配置文件(这里指向的是之前配置的那个config.properties)-->
+     <context:property-placeholder location="classpath:jdbc.properties" />
+       <!-- 数据库连接池 -->
+       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
+       destroy-method="close">
+       <property name="driverClassName" value="${driver}"/>
+       <property name="url" value="${url}"/>
+       <property name="username" value="${username}"/>
+       <property name="password" value="${password}"/>
+       <property name="maxActive" value="10"/>
+       <property name="maxIdle" value="5"/>
+       </bean>
+       <!-- sqlsessionFactory -->
+       <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+       <property name="dataSource" ref="dataSource"/>
+       <!-- mybatics配置 -->
+       <property name="configLocation" value="classpath:mybatis-config.xml" />
+       </bean>
+       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 配置扫描包的路径 如果要扫描多个包，中间使用半角逗号分隔 -->
+		<property name="basePackage" value="kugouMusic.Dao" />
+		<!-- 使用sqlSessionFactoryBeanName -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+       </bean>
 </beans>
